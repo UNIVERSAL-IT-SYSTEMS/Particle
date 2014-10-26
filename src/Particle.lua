@@ -45,6 +45,7 @@ function Particle.new(atom, x, y)
 	local shape = love.physics.newCircleShape(Particle.mass(atom))
 	--local body = love.physics.newBody(fakeWorld, 0, 0, "dynamic")
 	local body = love.physics.newBody(world, atom * 100 - love.graphics.getWidth(), atom * 100 - love.graphics.getHeight(), "dynamic") --temporary / may be bad, supposed to keep them out of the actual sim
+	--body:setBullet(true)
 	local fixture = love.physics.newFixture(body, shape)
 	fixture:setDensity(Particle.rand:random(0.5 * atom, 2 * atom))
 	fixture:setRestitution(Particle.rand:random(math.min(math.floor(atom / 80) + (0.4 * Particle.rand:random(0.9,1.1)), 0.9), 0.99))
